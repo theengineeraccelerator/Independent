@@ -28,8 +28,7 @@ Detailed Behavior
 	State switch changes
 		GOTO Manual Frequency Signal Driven State
                 
-   State: Manual Frequency Signal Driven Staten
-
+   State: Manual Frequency Signal Driven State
     	State switch changes
 		# Turn of PWM
 		# GOTO Idle State
