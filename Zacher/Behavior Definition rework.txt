@@ -1,44 +1,48 @@
 Detailed Behavior
+Input State
    State: Initial State
        Arduino Uno power on
       	   # Blink State indicator three times to confirm operational power	
           # Play one tone for one second to confirm functionality of speaker
           # Check state status for operational state
           # Change state indicator light to comply with the state
-		# If manual state indicator is chosen, GOTO Manual Frequency Signal Driven State
-		# If manual state indicator is not chosen, GOTO  idle state
+	   # If manual state indicator is chosen, 
+		GOTO Manual Frequency Signal Driven State
+	   # If manual state indicator is not chosen
+		 GOTO  idle state
 
    State: Idle State 
-       Micro Controller is set to Idle
+       Event: Micro Controller is set to Idle
         
-	State switch changes
+	Event:State switch changes
 		GOTO Manual Frequency Signal Driven State
 
-	Instruction are receved
+	Event:Instruction are received
 		GOTO Arduino Frequency Signal Driven State
 
    State: Arduino Frequency Signal Driven State
-       Input is received
+       Event:Input is received
 		# PWM out to drive speaker based on observed input from Arduino
 		# reset Idle timer
 	
-	Idle Timer times out
+	Event:Idle Timer times out
 		GOTO Idle State
 
-	State switch changes
+	Event:State switch changes
 		GOTO Manual Frequency Signal Driven State
                 
    State: Manual Frequency Signal Driven State
-    	State switch changes
+    	Event:State switch changes
 		# Turn of PWM
 		# GOTO Idle State
 
+Output States
    State: Eq switch off
-	The State Switch has been deactivated
+	Event:The State Switch has been deactivated
 	    # Signal is forwarded from the from Chebyshev Low Pass filter to Attenuator.
 
    State: Eq switch on
-	The State Switch has been activated
+	Event:The State Switch has been activated
 	    # Signal is forwarded from the from Chebyshev Low Pass filter to the 3 band eq. then the Attenuator.
 	    	# Signal is altered based on the EQ. settings.
 
