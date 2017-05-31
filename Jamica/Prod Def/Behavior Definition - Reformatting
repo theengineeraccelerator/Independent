@@ -1,10 +1,16 @@
  Behavior Definition
 Product States
-    - Standby - Devices charges but processor does not initialize.
-    - Idle - Device uses less battery capacity in this state.
+    Battery States
+    - Charging - Power is connected but not fully charged
+    - Fully Charged - Power is connected and fully charged 
+    - On Battery - Power is not connected 
+    - Low Battery - battery is less 30%. Warning is displayed
+    - Shutdown - system is disconnected
+
+    Systems State
+    - Sleep - Process is in low power mode 
     - Normal - Processor is initializes and waits for input. Device uses normal battery capacity in this state.
     - Recording - Device is recording and storing to memory
-    - Shutdown - 
 
 
     Initial State: Standby
