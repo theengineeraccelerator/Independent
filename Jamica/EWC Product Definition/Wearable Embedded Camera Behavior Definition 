@@ -1,0 +1,58 @@
+Behavior Definition
+
+Product States
+    Battery States
+    - Charging - Power is connected but not fully charged
+    - Fully Charged - Power is connected and fully charged
+    - On Battery - Power is not connected
+    - Low Battery - Battery is less 30%. Warning is displayed
+    - Shutdown - System is disconnected
+
+    Systems State
+    - Sleep - Process is in low power mode
+    - Normal - Processor is initialized and waits for input. Device uses normal battery capacity in this state.
+    - Recording - Device is recording and storing to memory
+
+    Initial State: Charging
+      Event: Charge switch is set to on, micro USB is connected to power supply
+          1. Battery charges
+          2. Devices remains in previous state
+          3. Charger LED displays yellow
+
+    Initial State: Fully Charged
+       Event: Charge switch has been set to on position and device has been charging
+          1. Charger LED displays green
+       Event: Micro USB port is disconnected from power supply
+          1. LED displays no color
+       Event: Charge switch is moved to off position
+          1. LED goes from green to displaying no color.
+          2. Battery fully charged
+
+    Initial State: On Battery
+        Event: Processor is on, charger off
+          1. Devices is drawing power from batter
+        Event: Shutdown device
+          2. Processor no longer on battery
+
+    Initial State: Low Battery
+      Event: With charger on, solid red LED indicates low battery state
+           1. System stores any unsaved data
+      Event: Low battery message displays on Viewfinder
+           1. System stores any unsaved data
+      Event: Connect charger to power supply
+           1. System moves to On Battery state
+
+    Initial State: Shutdown
+      Event: Power button is held for 5 seconds
+           1. Device powers off/ goes to shutdown state
+      Event: Power button is pressed while in shutdown state
+           1. Device powers on to normal state
+
+    Initial State: Sleep
+      Event: Device is idle for 5 minutes
+           1. Device goes to power saving, sleep mode
+
+    Initial State: Normal
+      Event: Devices is ready for general operation
+           1. Records immediately when record button is pressed
+           2. Saves data when record button is pressed again
