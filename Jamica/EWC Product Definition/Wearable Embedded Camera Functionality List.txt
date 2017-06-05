@@ -6,7 +6,6 @@ system into an accessory. The footage can be viewed in real time on a handheld, 
 It can be inconvenient or unsafe to record with a device in hand. Covert recording triggers
 legal and ethical privacy concerns.
 
-
 Conventions
 ??: A To-Be-Determined requirement.
 [Touch Display]: Future Feature. Wirelessly linked to the device to control playback and recording.
