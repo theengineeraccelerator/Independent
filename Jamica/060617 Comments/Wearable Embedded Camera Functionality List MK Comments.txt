@@ -1,0 +1,111 @@
+Wearable Embedded Camera Definition
+
+Introduction
+Wearable embedded camera allows a user to covertly record first person POV with by embedding the
+system into an accessory. The footage can be viewed in real time on a handheld, remote display.
+It can be inconvenient or unsafe to record with a device in hand. Covert recording triggers
+legal and ethical privacy concerns.
+
+Conventions
+??: A To-Be-Determined requirement.
+[Touch Display]: Future Feature. Wirelessly linked to the device to control playback and recording.
+
+Product Characteristics
+    - Requires record and storage
+      - Must up to 3 consecutive minutes
+      - Must store 5gb of footage
+    - Requires portability
+      - Weight: 10g
+      - Height (X): 5.4mm
+      - Length (Y): 65mm
+      - Width (Z): 30mm
+      - Target Cost: ~$30
+      - Product Life Time Target: 5-10 years
+      - Operating Temperature Range (Chip): -40 to +85
+
+Wearable Embedded Camera Feature List
+
+COMPONENTS
+   LED Indicator
+     Characteristics
+        - Tricolor LED
+            Colors: White, Yellow, Red
+        - Used to display system states
+            States: Normal, Sleep, Recording (respective to colors above)
+        - Replaceable
+
+    Power Button
+      Characteristics
+        - Tactile pushbutton
+        - 6mm slim
+        - Inputs to processor
+
+    Charge Switch
+      Characteristics
+            - Breadboard-friendly SPDT Slide Switch
+            - Binary, two position slide
+            - 3-Pin connector
+
+    Battery
+      Characteristics
+        - Consumer Replaceable
+        - Lithium Ion Polymer Battery
+        - 3.7v 
+
+		Implementation
+		- includes protection circuitry
+		- 500mAh/ 1.9 Wh
+       		- 2-pin JST-PH connector
+       		- requires LiIon/LiPoly constant-voltage/constant-current charger to recharge
+       		- safe constant-voltage/constant-current recharge rate >= 150mA
+
+    Charger
+      Characteristics
+        - Interfaces between power supply and battery <— remove this. It is ca
+        - Powered by any 3.7V LiIon/LiPoly battery
+
+		Implementation
+       		- PowerBoost 500 Charger
+        	- Rechargeable 5V Lipo USB Boost @ 500mA+
+        	- Outputs to 5.2V DC
+        	- Standard Micro USB jack
+        	- Built in LED to indicate charging states: yellow, red, green
+        	- Indicates low battery state at voltage dip below 3.2V
+
+    Camera
+      Characteristics
+        - Infrared
+        - Waterproof
+
+		Implementation
+        	- Raspberry Pi NoIR Camera Board v2
+        	- 8 Megapixels
+        	- Sony IMX219 image sensor
+
+
+    Processor
+      Characteristics
+      - ?
+
+		Implementation
+		- Raspberry Pi Zero W
+	        - Respond to power button
+      	  	- Powered by the battery
+        	- BCM43143 WiFi chip
+        	- 512MB RAM
+        	- 9.3g
+
+    Storage
+      Characteristics
+        - Stores footage from camera
+        - Consumer replaceable/removable
+
+    Display
+      Characteristics
+        - Real-time viewfinder for camera footage
+        - Reads battery and indicates power level
+
+    Touch (Display)
+      Characteristics
+        - Responsive to touch
+        - Control actions of camera - play, pause, record
