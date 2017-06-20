@@ -2,7 +2,7 @@ Wearable Embedded Camera Definition
 
 Introduction
 Wearable embedded camera allows a user to covertly record first person POV with by embedding the
-system into an accessory. The footage can be viewed in real time on a handheld, remote display.
+system into an accessory. The footage can be viewed in real time on a handheld viewfinder.
 It can be inconvenient or unsafe to record with a device in hand. Covert recording triggers
 legal and ethical privacy concerns.
 
@@ -13,15 +13,15 @@ Conventions
 Product Characteristics
     - Requires record and storage
       - Must up to 3 consecutive minutes
-      - Must store 5gb of footage
+      - Must store 8gb of footage
     - Requires portability
       - Weight: 10g
       - Height (X): 5.4mm
       - Length (Y): 65mm
       - Width (Z): 30mm
       - Target Cost: ~$30
-      - Product Life Time Target: 5-10 years
-      - Operating Temperature Range (Chip): -40 to +85
+      - Product Life Time Target: 5 years
+      - Operating Temperature Range (Chip): 85F
 
 Wearable Embedded Camera Feature List
 
@@ -30,8 +30,6 @@ COMPONENTS
      Characteristics
         - Tricolor LED
             Colors: White, Yellow, Red
-        - Used to display system states
-            States: Normal, Sleep, Recording (respective to colors above)
         - Replaceable
 
     Power Button
@@ -50,52 +48,84 @@ COMPONENTS
       Characteristics
         - Consumer Replaceable
         - Lithium Ion Polymer Battery
-        - 3.7v 500mAh/ 1.9 Wh
-        - 2-pin JST-PH connector
-        - includes protection circuitry
-        - requires LiIon/LiPoly constant-voltage/constant-current charger to recharge
-        - safe constant-voltage/constant-current recharge rate >= 150mA
+        - 3.7v
+
+              Implementation
+              - 500mAh/ 1.9 Wh
+              - 2-pin JST-PH connector
+              - includes protection circuitry
+              - requires LiIon/LiPoly constant-voltage/constant-current charger to recharge
+              - safe constant-voltage/constant-current recharge rate >= 150mA
 
     Charger
       Characteristics
-        - PowerBoost 500 Charger
         - Interfaces between power supply and battery
-        - Built in LED to indicate charging states: yellow, red, green
-        - Indicates low battery state at voltage dip below 3.2V
-        - Rechargeable 5V Lipo USB Boost @ 500mA+
         - Powered by any 3.7V LiIon/LiPoly battery
-        - Outputs to 5.2V DC
-        - Standard Micro USB jack
+        - 2 to 3 hours required charging time
+
+              Implementation
+              - PowerBoost 500 Charger
+              - Built in LED to indicate charging states: yellow, red, green
+              - Indicates low battery state at voltage dip below 3.2V
+              - Rechargeable 5V Lipo USB Boost @ 500mA+
+              - Outputs to 5.2V DC
+              - Standard Micro USB jack
 
     Camera
       Characteristics
-        - Raspberry Pi NoIR Camera Board v2
-        - 8 Megapixels
-        - Sony IMX219 image sensor
         - Infrared
-        - Connects to processor
         - Waterproof
+        - => 8 Megapixels
+        - Lens Diameter > 6.9mm
+
+              Implementation
+              - Raspberry Pi NoIR Camera Board v2
+              - 8 Megapixels
+              - Sony IMX219 image sensor
 
     Processor
       Characteristics
-        - Raspberry Pi Zero W
-        - Respond to power button
-        - Powered by the battery
-        - BCM43143 WiFi chip
-        - 512MB RAM
-        - 9.3g
+        - Application processor
+        - 1GHz ARM11 core
+        - 512MB of LPDDR2 SDRAM
+        - Micro-SD card slot
+        - Mini-HDMI socket for 1080p60 video output
+        - Micro-USB sockets for data and power
+        - Unpopulated GPIO header
+        - Unpopulated composite video header
+        - Form factor <= 65mm x 30mm x 5mm
+
+              Implementation
+              - Raspberry Pi Zero W
+              - Respond to power button
+              - Powered by the battery
+              - BCM43143 WiFi chip
+              - 512MB RAM
+              - 9.3g
 
     Storage
       Characteristics
-        - Stores footage from camera
-        - Consumer replaceable/removable
+        - 16gb minimum
+        - Consumer replaceable + accessible
 
     Display
       Characteristics
-        - Real-time viewfinder for camera footage
-        - Reads battery and indicates power level
+        - Real-time viewfinder of embedded camera footage
+        - Displays indicates battery/power level
+        - Compact display >= 5 inches
+        - 16:9 resolution of 1334x750
+
+            Implementation
+            - iPhone 6
+            - RemotePi iOS Application
+            - PyQT GUI/Py App
 
     Touch (Display)
       Characteristics
         - Responsive to touch
         - Control actions of camera - play, pause, record
+
+           Implementation
+           - iPhone 6
+           - RemotePi iOS Application
+           - PyQT GUI/Py App
